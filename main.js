@@ -86,19 +86,21 @@ function endRound() {
 function newRoll() {
   console.log("new roll started");
   card1.state = "unselected" //how to do this for all cards?
+  rollScore = 0
 }
 
-function pigSelected() {
+function pigSelected(name) {
   switch (card1.state) {
     case "unselected":
       rollScore = rollScore + card1.value
       card1.switchState()
-      confirmRoll()
+      console.log("Confirm roll for " + rollScore + " points?");
       break;
     case "single":
       rollScore = rollScore + card1.value
       card1.switchState()
-      confirmRoll()
+      console.log("pts: " + card1.value + " for a roll total of " + rollScore);
+      console.log("Confirm roll for " + rollScore + " points?");
       break;
     case "double":
       rollScore = rollScore - (card1.value * 2)
@@ -112,10 +114,24 @@ function pigSelected() {
   console.log("  State: " + card1.state);
   displayStats()
   // [ ] updateRoundValue()
+  console.log(name + " selected");
 }
 
-function confirmRoll() {
-  console.log("Confirm roll for " + rollScore + " points?");
+function confirmRoll(confirm) {
+  switch (confirm) {
+    case "yes":
+        console.log("Confirmed for " + rollScore + " pts");
+        roundScore = rollScore
+        newRoll()
+        displayStats()
+      break;
+      case "no":
+        console.log("not confirmed");
+        displayStats()
+      break;
+    default:
+      break;
+  }
 }
 
 newGame()
