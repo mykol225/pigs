@@ -1,4 +1,25 @@
 body {
-	background-color: rgb(219, 219, 219);
+	background-color: rgb(37, 37, 37);
 	font-family: Helvetica, Arial, sans-serif;
+}
+
+button {
+	width: 200px;
+	height: 100px;
+	font-size: 20px;
+	border: none;
+	border-radius: 7px;
+	margin: 5px;
+	background-color: rgb(61, 61, 61);
+	color: white;
+	vertical-align: middle;
+}
+
+.pig-card {
+	background-color: rgb(247, 35, 116);
+	color: white;
+}
+
+.main-btn {
+	width: 100%;
 }

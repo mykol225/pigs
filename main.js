@@ -35,15 +35,42 @@ class Player {
   }
 }
 
-const playerList = []; //how to populate this based on input from previous page?
+let playerList = []; //how to populate this based on input from previous page?
 
 let round;
 let rollScore;
 let roundScore;
 let currentPlayer;
 
-let card1 = new Pig("porker", "porker-single.jpg", 15, "unselected") // card2, card3, card4, etc
+
+let card1 = new Pig("razorback", "razorback-single.jpg", 5, "unselected")
+let card2 = new Pig("trotter", "trotter-single.jpg", 5, "unselected")
+let card3 = new Pig("snouter", "snouter-single.jpg", 10, "unselected")
+let card4 = new Pig("leaning", "leaning-single.jpg", 15, "unselected")
+let card5 = new Pig("pigout", "pigout-single.jpg", 0, "unselected")
+let card6 = new Pig("oinker", "oinker-single.jpg", 0, "unselected")
+
 let player1 = new Player("Sarah", 100)
+
+function addPlayers(name1, name2, name3) {
+  if (arguments.length == 1) // Means second parameter is not passed
+    {
+      playerList = [name1]
+      console.log(name1 + " was added to the game");
+    }
+    if (arguments.length == 2) // Means third parameter is not passed
+    {
+      playerList = [name1, name2]
+      console.log(name1 + " & " + name2 + " were added to the game");
+    }
+    if (arguments.length == 3) // Means all parameters were passed
+    {
+      playerList = [name1, name2, name3]
+      console.log(name1 + ", " + name2 + " & " + name3 + " were added to the game");
+    }
+    currentPlayer = playerList[0]
+    newRound()
+}
 
 
 function newGame() {
@@ -52,8 +79,7 @@ function newGame() {
   roundScore = 0
   player1.totalPts = 0
   currentPlayer = playerList[0]
-  console.log("Game begins!");
-  newRound()
+  console.log("Game begins! Enter players.");
 }
 
 function newRound() {
@@ -67,12 +93,17 @@ function newRound() {
   roundScore = 0
   rollScore = 0
   card1.state = "unselected" //how to do this for all cards?
+  card2.state = "unselected"
+  card3.state = "unselected"
+  card4.state = "unselected"
+  card5.state = "unselected"
+  card6.state = "unselected" 
   displayStats()
 }
 
 function displayStats() {
   // can be changed to display or update page
-  console.log("  Player: Player 1");
+  console.log("  Player: " + currentPlayer);
   console.log("  Roll: " + rollScore);
   console.log("  Round: " + roundScore);
   console.log("  Total: " +   player1.totalPts);
@@ -86,42 +117,47 @@ function endRound() {
 function newRoll() {
   console.log("new roll started");
   card1.state = "unselected" //how to do this for all cards?
+  card2.state = "unselected"
+  card3.state = "unselected"
+  card4.state = "unselected"
+  card5.state = "unselected"
+  card6.state = "unselected" 
   rollScore = 0
 }
 
-function pigSelected(name) {
-  switch (card1.state) {
+function pigSelected(pig) {
+  switch (pig.state) {
     case "unselected":
-      rollScore = rollScore + card1.value
-      card1.switchState()
+      rollScore = rollScore + pig.value
+      pig.switchState()
       console.log("Confirm roll for " + rollScore + " points?");
       break;
     case "single":
-      rollScore = rollScore + card1.value
-      card1.switchState()
-      console.log("pts: " + card1.value + " for a roll total of " + rollScore);
+      rollScore = rollScore + pig.value
+      pig.switchState()
+      console.log("pts: " + pig.value + " for a roll total of " + rollScore);
       console.log("Confirm roll for " + rollScore + " points?");
       break;
     case "double":
-      rollScore = rollScore - (card1.value * 2)
-      card1.switchState()
+      rollScore = rollScore - (pig.value * 2)
+      pig.switchState()
       console.log("confirm unselected");
       break;
     default:
       break;
   }
   console.log("  Roll amount: " + rollScore);
-  console.log("  State: " + card1.state);
+  console.log("  State: " + pig.state);
   displayStats()
   // [ ] updateRoundValue()
-  console.log(name + " selected");
+  console.log(pig.name + " selected");
 }
 
 function confirmRoll(confirm) {
   switch (confirm) {
     case "yes":
         console.log("Confirmed for " + rollScore + " pts");
-        roundScore = rollScore
+        roundScore = roundScore + rollScore
         newRoll()
         displayStats()
       break;
@@ -134,5 +170,28 @@ function confirmRoll(confirm) {
   }
 }
 
+function bank() {
+  // roundScore = 0
+  // rollScore = 0
+
+  // displayStats()
+}
+
 newGame()
 
+//languge 
+
+// Rolls (pig choice) 
+//
+// Bank adds to player total 
+
+
+/*
+Roll: select pigs, add points to roll
+Add roll to round
+Round: mulitple rolls before bank or PigOIut
+Bank to add round points to player total 
+Player total 
+
+
+*/

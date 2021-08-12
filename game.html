@@ -7,6 +7,28 @@
 		<title>GamePage</title>
 		<link rel="stylesheet" href="game.css" />
 	</head>
-	<body></body>
+	<body>
+		<button onclick="addPlayers('mike','chris', 'sarah')" class="main-btn">
+			Add Players (Mike, Chris, Sarah)
+		</button>
+		<button onclick="pigSelected(card1)" class="pig-card">
+			Razorback: 5pts
+		</button>
+		<button onclick="pigSelected(card2)" class="pig-card">Trotter: 5pts</button>
+		<button onclick="pigSelected(card3)" class="pig-card">
+			Snouter: 10pts
+		</button>
+		<button onclick="pigSelected(card4)" class="pig-card">
+			Leaning Jowler: 15pts
+		</button>
+		<button onclick="pigSelected(card5)" class="pig-card">
+			Pig Out: Lose your points
+		</button>
+		<button onclick="pigSelected(card6)" class="pig-card">
+			Oinker: Back to Zero
+		</button>
+		<button onclick="confirmRoll('yes')" class="main-btn">Done</button>
+		<button onclick=" " class="main-btn">Bank</button>
+	</body>
 	<script src="main.js"></script>
 </html>
