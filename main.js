@@ -11,20 +11,27 @@ class Pig {
       case "unselected":
         this.state = "single";
         this.image = "porker-single.jpg"
+        document.getElementById(this.name).className = "pig-card-single";
         break;
       case "single":
         this.state = "double"
         this.image = "porker-double.jpg"
+        document.getElementById(this.name).className = "pig-card-double";
         break;
         case "double":
           this.state = "unselected"
           this.image = "porker-single.jpg"
+          document.getElementById(this.name).className = "pig-card";
           break;
-      
       default:
         console.log("default");
         break;
     }
+  }
+  resetState() {
+    this.state = "unselected"
+    this.image = "porker-single.jpg"
+    document.getElementById(this.name).className = "pig-card";
   }
 }
 
@@ -70,6 +77,9 @@ function addPlayers(name1, name2, name3) {
     }
     currentPlayer = playerList[0]
     newRound()
+      //disable add players button 
+    document.getElementById("add-players").disabled = true
+    document.getElementById("add-players").innerText = "Players added, round started"
 }
 
 
@@ -80,33 +90,36 @@ function newGame() {
   player1.totalPts = 0
   currentPlayer = playerList[0]
   console.log("Game begins! Enter players.");
+  document.getElementById("roll-done").disabled = true
+  document.getElementById("roll-done").innerText = "Choose pigs"
+}
+
+function nextPlayer() {
+  let current = playerList.indexOf(currentPlayer)
+  current++
+  currentPlayer = playerList[current]
+  console.log(currentPlayer + "\'s turn");
 }
 
 function newRound() {
   console.log("New round!");
-  // [ ] get current player
-  // [ ] display current player
-  // [ ] display round value #
-  // [ ] display player total 
-  // [ ] display all pig cards
+  (round > 0) ? nextPlayer() : null; //if not on first round call nextPlayer()
+  currentPlayer = playerList[0]
   round++
   roundScore = 0
   rollScore = 0
-  card1.state = "unselected" //how to do this for all cards?
-  card2.state = "unselected"
-  card3.state = "unselected"
-  card4.state = "unselected"
-  card5.state = "unselected"
-  card6.state = "unselected" 
+  document.getElementById("roll-done").disabled = true
+  document.getElementById("roll-done").innerText = "Choose pigs"
   displayStats()
 }
 
 function displayStats() {
-  // can be changed to display or update page
-  console.log("  Player: " + currentPlayer);
-  console.log("  Roll: " + rollScore);
-  console.log("  Round: " + roundScore);
-  console.log("  Total: " +   player1.totalPts);
+
+  document.getElementById("stats-players").innerHTML = "Players: " + playerList[0] + ", " + playerList[1] + ", " + playerList[2];
+  document.getElementById("stats-rndplayer").innerHTML = "Round player: " + currentPlayer
+  document.getElementById("stats-roll").innerHTML = "This roll: " + rollScore
+  document.getElementById("stats-round").innerHTML = "This round: " + roundScore
+  document.getElementById("stats-total").innerHTML = "Player total: " +   player1.totalPts
 }
 
 function endRound() {
@@ -116,13 +129,15 @@ function endRound() {
 
 function newRoll() {
   console.log("new roll started");
-  card1.state = "unselected" //how to do this for all cards?
-  card2.state = "unselected"
-  card3.state = "unselected"
-  card4.state = "unselected"
-  card5.state = "unselected"
-  card6.state = "unselected" 
+  card1.resetState()
+  card2.resetState()
+  card3.resetState()
+  card4.resetState()
+  card5.resetState()
+  card6.resetState()
   rollScore = 0
+  document.getElementById("roll-done").disabled = true
+  document.getElementById("roll-done").innerText = "Choose pigs"
 }
 
 function pigSelected(pig) {
@@ -130,27 +145,25 @@ function pigSelected(pig) {
     case "unselected":
       rollScore = rollScore + pig.value
       pig.switchState()
-      console.log("Confirm roll for " + rollScore + " points?");
+      
       break;
     case "single":
       rollScore = rollScore + pig.value
       pig.switchState()
-      console.log("pts: " + pig.value + " for a roll total of " + rollScore);
-      console.log("Confirm roll for " + rollScore + " points?");
+      document.getElementById("roll-done").disabled = false
+      document.getElementById("roll-done").innerText = "Confirm roll for " + rollScore + " points?"
       break;
     case "double":
       rollScore = rollScore - (pig.value * 2)
       pig.switchState()
-      console.log("confirm unselected");
+      document.getElementById("roll-done").disabled = true
+      document.getElementById("roll-done").innerText = "Choose pigs"
       break;
     default:
       break;
   }
-  console.log("  Roll amount: " + rollScore);
-  console.log("  State: " + pig.state);
+  //
   displayStats()
-  // [ ] updateRoundValue()
-  console.log(pig.name + " selected");
 }
 
 function confirmRoll(confirm) {
@@ -173,25 +186,8 @@ function confirmRoll(confirm) {
 function bank() {
   // roundScore = 0
   // rollScore = 0
-
   // displayStats()
+  newRound()
 }
 
 newGame()
-
-//languge 
-
-// Rolls (pig choice) 
-//
-// Bank adds to player total 
-
-
-/*
-Roll: select pigs, add points to roll
-Add roll to round
-Round: mulitple rolls before bank or PigOIut
-Bank to add round points to player total 
-Player total 
-
-
-*/

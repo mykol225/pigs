@@ -15,11 +15,37 @@ button {
 	vertical-align: middle;
 }
 
+button:disabled {
+	background-color: rgb(46, 46, 46);
+	color: rgb(19, 19, 19);
+}
+
 .pig-card {
 	background-color: rgb(247, 35, 116);
 	color: white;
 }
 
+.pig-card-single {
+	background-color: rgb(247, 35, 116);
+	color: white;
+	box-shadow: 0 0 0 2px rgb(255, 255, 255);
+}
+
+.pig-card-double {
+	background-color: rgb(247, 35, 116);
+	color: white;
+	box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px rgb(37, 37, 37),
+		0 0 0 6px rgb(255, 255, 255);
+}
+
 .main-btn {
 	width: 100%;
+}
+
+.dashboard {
+	color: white;
+}
+
+.dashboard li {
+	list-style-type: none;
 }

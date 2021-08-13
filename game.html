@@ -8,27 +8,44 @@
 		<link rel="stylesheet" href="game.css" />
 	</head>
 	<body>
-		<button onclick="addPlayers('mike','chris', 'sarah')" class="main-btn">
-			Add Players (Mike, Chris, Sarah)
+		<div class="dashboard">
+			<ul>
+				<li id="stats-players">Players:</li>
+				<li id="stats-rndplayer">Round player:</li>
+				<li id="stats-roll">This roll:</li>
+				<li id="stats-round">This round:</li>
+				<li id="stats-total">Player total:</li>
+			</ul>
+		</div>
+		<button
+			onclick="addPlayers('mike','chris', 'sarah')"
+			class="main-btn"
+			id="add-players"
+		>
+			Add players, start round
 		</button>
-		<button onclick="pigSelected(card1)" class="pig-card">
+		<button onclick="pigSelected(card1)" class="pig-card" id="razorback">
 			Razorback: 5pts
 		</button>
-		<button onclick="pigSelected(card2)" class="pig-card">Trotter: 5pts</button>
-		<button onclick="pigSelected(card3)" class="pig-card">
+		<button onclick="pigSelected(card2)" class="pig-card" id="trotter">
+			Trotter: 5pts
+		</button>
+		<button onclick="pigSelected(card3)" class="pig-card" id="snouter">
 			Snouter: 10pts
 		</button>
-		<button onclick="pigSelected(card4)" class="pig-card">
+		<button onclick="pigSelected(card4)" class="pig-card" id="leaning">
 			Leaning Jowler: 15pts
 		</button>
-		<button onclick="pigSelected(card5)" class="pig-card">
+		<button onclick="pigSelected(card5)" class="pig-card" id="pigout">
 			Pig Out: Lose your points
 		</button>
-		<button onclick="pigSelected(card6)" class="pig-card">
+		<button onclick="pigSelected(card6)" class="pig-card" id="oinker">
 			Oinker: Back to Zero
 		</button>
-		<button onclick="confirmRoll('yes')" class="main-btn">Done</button>
-		<button onclick=" " class="main-btn">Bank</button>
+		<button onclick="confirmRoll('yes')" class="main-btn" id="roll-done">
+			Done
+		</button>
+		<button onclick="bank()" class="main-btn">Bank [not setup]</button>
 	</body>
 	<script src="main.js"></script>
 </html>
