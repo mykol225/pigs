@@ -15,6 +15,10 @@ button {
 	vertical-align: middle;
 }
 
+/* .unselectable-text {
+	user-select: none;
+} */
+
 button:disabled {
 	background-color: rgb(46, 46, 46);
 	color: rgb(19, 19, 19);
