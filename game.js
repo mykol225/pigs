@@ -1,4 +1,3 @@
-
 class Pig {
   constructor(name, image, value, state) {
     this.name = name;
@@ -49,7 +48,6 @@ class Player {
   }
 }
 
-let playerList = [];            // how to populate this based on input from previous page?
 
 let round;
 let rollScore;
@@ -58,6 +56,9 @@ let currentPlayer;
 let selectedPigs = [];
 let unselectedPigs = [];
 let confirmBtn = document.getElementById("roll-done")
+let instructions;
+let playerList = [];
+
 
 
 let card1 = new Pig("razorback", "razorback-single.jpg", 5, "unselected")
@@ -69,29 +70,15 @@ let card6 = new Pig("oinker", "oinker-single.jpg", 10, "unselected")
 
 let cards = [card1, card2, card3, card4, card5, card6]
 
-let player1 = new Player("Sarah", 100)
 
-function addPlayers(name1, name2, name3) {
-  if (arguments.length == 1)                            // means second parameter is not passed
-    {
-      playerList = [name1]
-      console.log(name1 + " was added to the game");
+function addPlayers() {
+  for (let i = 0; i < arguments.length; i++) {         // for every argument in addPlayers()
+    if (arguments[i] != "") {                          // check if empty
+      let player = new Player(arguments[i], 0)         // if not, make a new instance of the Player class
+      playerList.push(player)                          // add that instance to the playerList array
     }
-    if (arguments.length == 2)                          // means third parameter is not passed
-    {
-      playerList = [name1, name2]
-      console.log(name1 + " & " + name2 + " were added to the game");
-    }
-    if (arguments.length == 3)                          // means all parameters were passed
-    {
-      playerList = [name1, name2, name3]
-      console.log(name1 + ", " + name2 + " & " + name3 + " were added to the game");
-    }
-    currentPlayer = playerList[0]
-    newRound()
-      //disable add players button 
-    document.getElementById("add-players").disabled = true
-    document.getElementById("add-players").innerText = "Players added, round started"
+  }
+  currentPlayer = playerList[0]                        
 }
 
 
@@ -99,17 +86,24 @@ function newGame() {
   round = 0
   rollScore = 0
   roundScore = 0
-  player1.totalPts = 0
-  currentPlayer = playerList[0]
-  console.log("Game begins! Enter players.");
   confirmIsDisabled(true)
+  let params = new URLSearchParams(window.location.search)  // create an instance of the parameters
+  let players = JSON.parse(params.get("playerList"))        // find all playerList params and parse the JSON into an array
+  addPlayers(...players)                                    // spread the array out as arguments for addPlayers()
+  
+  for (let i = 0; i < playerList.length; i++) {
+    let ptUl= document.getElementById("player-totals")
+    let ptLi = document.createElement("li")
+    ptLi.className = "player-total"
+    ptLi.id = "p-total-" + (i + 1)
+    ptLi.innerHTML = playerList[i].name + ": " + playerList[i].totalPts + " pts"
+    ptUl.appendChild(ptLi)
+  }
   newRound()
 }
 
 function newRound() {
-  console.log("New round!");
-  (round > 0) ? nextPlayer() : null;                    // if not on first round call nextPlayer()
-  currentPlayer = playerList[0]
+  (round > 0) ? nextPlayer() : null;                        // if not on first round call nextPlayer()
   round++
   roundScore = 0
   rollScore = 0
@@ -119,13 +113,10 @@ function newRound() {
   newRoll()
 }
 
-function endRound() {
-  console.log("round has ended");
-  // [ ] set current player to next player in list
-}
 
 function newRoll() {
-  console.log("new roll started");
+  instructions = currentPlayer.name + "\'s turn. " + "New roll!";
+  displayStats()
   rollScore = 0
   confirmIsDisabled(true)
   selectedPigs = []
@@ -141,19 +132,33 @@ function newRoll() {
 
 
 function nextPlayer() {
-  let current = playerList.indexOf(currentPlayer)
-  current++
-  currentPlayer = playerList[current]
-  console.log(currentPlayer + "\'s turn");
+  if (playerList.indexOf(currentPlayer) < (playerList.length - 1)) {    //if not at end of array 
+    let current = playerList.indexOf(currentPlayer)
+    current++
+    currentPlayer = playerList[current]
+  } else {
+    currentPlayer = playerList[0]
+  }
+  displayStats()
 }
 
 function displayStats() {
-  document.getElementById("stats-players").innerHTML = "Players: " + playerList[0] + ", " + playerList[1] + ", " + playerList[2];
-  document.getElementById("stats-rndplayer").innerHTML = "Round player: " + currentPlayer
+  document.getElementById("console").innerHTML = instructions
+  document.getElementById("stats-rndplayer").innerHTML = "Round player: " + currentPlayer.name
   document.getElementById("stats-roll").innerHTML = "This roll: " + rollScore
   document.getElementById("stats-round").innerHTML = "This round: " + roundScore
-  document.getElementById("stats-total").innerHTML = "Player total: " +   player1.totalPts
+  document.getElementById("stats-total").innerHTML = "Player total: " + currentPlayer.totalPts                                        
+  // document.getElementById("stats-players").innerHTML = "Players: " + playerList.map(e => e.name).join(", ")   //maps playerList array through function e that returns .name of each item in array
+  for (let i = 0; i < playerList.length; i++) {
+    document.getElementById("p-total-" + (i + 1)).innerHTML = playerList[i].name + ": " + playerList[i].totalPts + " pts"
+    
+  }
+
 }
+
+
+
+
 
 
 function pigSelected(pig) {
@@ -201,7 +206,29 @@ function pigSelected(pig) {
       console.log("default");
       break;
   }
+  picCalc(20, 30)
   displayStats()
+}
+
+function picCalc(first, second) {
+  // SINGLES
+    // leaning jowler: 15
+    // snouter: 10
+    // trotter: 5
+    // razorback: 5
+    // sider w dot: 1
+    // sider no dot: 1
+    // oinker (touching): lose game points
+
+  // COMBOS
+    // combination of two different singles: add them up
+    // double leaning jowler: 60 (4x)
+    // double snouter: 40 (4x)
+    // double trotter: 20 (4x)
+    // double razorback: 10 
+    // double sider w dot: 1
+    // double sider no dot: 1
+    // double sider alternating dots (PIG OUT): lose round points
 }
 
 function shiftArray(pig, fromArray, toArray) {
@@ -230,7 +257,6 @@ function pigIsDisabled(bool) {
 function confirmRoll(confirm) {
   switch (confirm) { 
     case "yes":
-        console.log("Confirmed for " + rollScore + " pts");
         roundScore = roundScore + rollScore
         newRoll()
         displayStats()
@@ -248,14 +274,20 @@ function confirmRoll(confirm) {
 // for each pig in unselected change it's state to unselected and enabled
 
 function bank() {
-  // roundScore = 0
-  // rollScore = 0
-  // displayStats()
-  newRound()
+
+  if (roundScore > 0) {
+    currentPlayer.totalPts = currentPlayer.totalPts + roundScore
+    roundScore = 0    // reset round score
+    rollScore = 0     // reset roll score
+    displayStats()
+  
+    newRound()
+  } else {
+    console.log("no points to bank");
+  }
 }
 
 newGame()
-
 
 
 // complicated point system
@@ -272,5 +304,5 @@ newGame()
 // double Sider:            1 pts (two pigs both with a dot up, or both with no dot up)
 // PigOut:                  Lose all points from this round (two pigs one with dot up other with dot down)
 // Oinker:                  Lose all game points (two pigs touching)
-// Piggy Back:              Out of game (pigs stacked on top each other)
+// Piggy Back:              Out of game (pigs stacked on top each other
 

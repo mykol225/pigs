@@ -8,22 +8,17 @@
 		<link rel="stylesheet" href="game.css" />
 	</head>
 	<body>
+		<a href="index.html">Home</a>
 		<div class="dashboard">
-			<ul>
-				<li id="stats-players">Players:</li>
+			<h3 id="console">Game begins!</h3>
+			<ul id="stats">
 				<li id="stats-rndplayer">Round player:</li>
 				<li id="stats-roll">This roll:</li>
 				<li id="stats-round">This round:</li>
 				<li id="stats-total">Player total:</li>
 			</ul>
+			<ul id="player-totals"></ul>
 		</div>
-		<button
-			onclick="addPlayers('mike','chris', 'sarah')"
-			class="main-btn"
-			id="add-players"
-		>
-			Add players, start round
-		</button>
 		<button onclick="pigSelected(card1)" class="pig-card" id="razorback">
 			Razorback: 5pts
 		</button>
@@ -45,7 +40,7 @@
 		<button onclick="confirmRoll('yes')" class="main-btn" id="roll-done">
 			Done
 		</button>
-		<button onclick="bank()" class="main-btn">Bank [not setup]</button>
+		<button onclick="bank()" class="main-btn">Bank</button>
 	</body>
-	<script src="main.js"></script>
+	<script src="game.js"></script>
 </html>

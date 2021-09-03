@@ -15,10 +15,6 @@ button {
 	vertical-align: middle;
 }
 
-/* .unselectable-text {
-	user-select: none;
-} */
-
 button:disabled {
 	background-color: rgb(46, 46, 46);
 	color: rgb(19, 19, 19);
@@ -30,13 +26,13 @@ button:disabled {
 }
 
 .pig-card-single {
-	background-color: rgb(247, 35, 116);
+	background-color: rgb(226, 44, 114);
 	color: white;
 	box-shadow: 0 0 0 2px rgb(255, 255, 255);
 }
 
 .pig-card-double {
-	background-color: rgb(247, 35, 116);
+	background-color: rgb(226, 44, 114);
 	color: white;
 	box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px rgb(37, 37, 37),
 		0 0 0 6px rgb(255, 255, 255);
@@ -47,9 +43,17 @@ button:disabled {
 }
 
 .dashboard {
+	display: flex;
 	color: white;
 }
 
 .dashboard li {
 	list-style-type: none;
+}
+
+.player-totals {
+}
+
+#console {
+	text-align: center;
 }

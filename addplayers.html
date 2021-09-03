@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Add players</title>
+		<link rel="stylesheet" href="addPlayers.css" />
+	</head>
+	<body>
+		<a href="index.html">Home</a>
+		<div id="wrapper">
+			<div><p id="instructions">Players</p></div>
+			<form id="form" autocomplete="off"></form>
+			<button id="addbtn" onclick="addInput()">+ Add player</button>
+			<button
+				class="main-btn"
+				id="start"
+				onclick="startGame(); go()"
+				disabled="true"
+			>
+				Start game
+			</button>
+		</div>
+	</body>
+	<script src="addPlayers.js"></script>
+</html>

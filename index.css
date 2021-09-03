@@ -1,0 +1,32 @@
+body {
+	margin: 0px;
+	padding: 20px;
+	background-color: rgb(37, 37, 37);
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#title {
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: 100px;
+	font-size: 80px;
+}
+
+#wrapper {
+	margin: auto;
+	max-width: 700px;
+}
+
+#newButton {
+	display: block;
+	width: 100%;
+	max-width: 700px;
+	height: 100px;
+	font-size: 20px;
+	border: none;
+	border-radius: 7px;
+	margin: 50px 0px;
+	background-color: rgb(61, 61, 61);
+	color: white;
+}
