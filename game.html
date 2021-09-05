@@ -8,39 +8,73 @@
 		<link rel="stylesheet" href="game.css" />
 	</head>
 	<body>
-		<a href="index.html">Home</a>
+		<div id="header">
+			<div id="home">
+				<img src="assets/back_arrow.png" />
+				<a href="index.html">Home</a>
+			</div>
+			<div id="round-info">
+				<p id="round-num">Round 1</p>
+				<p id="round-score">5</p>
+			</div>
+			<div id="rules">
+				<a>Rules</a>
+			</div>
+		</div>
+		<div id="players">
+			<div id="player1" class="player-card">
+				<p id="player-name">Jena</p>
+				<p id="player-total">56</p>
+			</div>
+			<div id="player2" class="player-card inactive">
+				<p id="player-name">Sarah</p>
+				<p id="player-total">43</p>
+			</div>
+			<div id="player3" class="player-card inactive">
+				<p id="player-name">Chris</p>
+				<p id="player-total">51</p>
+			</div>
+		</div>
+		<div id="pigs-container">
+			<button onclick="pigSelected(card1)" class="pig-btn" id="razorback">
+				<img class="pig-img" src="/assets/PigFPO.png" />
+				Razorback
+			</button>
+			<button onclick="pigSelected(card2)" class="pig-btn" id="trotter">
+				<img class="pig-img" src="/assets/PigFPO.png" />
+				Trotter
+			</button>
+			<button onclick="pigSelected(card3)" class="pig-btn" id="snouter">
+				<img class="pig-img" src="/assets/PigFPO.png" />
+				Snouter
+			</button>
+			<button onclick="pigSelected(card4)" class="pig-btn" id="leaning">
+				<img class="pig-img" src="/assets/PigFPO.png" />
+				Leaning Jowler
+			</button>
+			<button onclick="pigSelected(card5)" class="pig-btn" id="pigout">
+				<img class="pig-img" src="/assets/PigFPO.png" />
+				Pig Out
+			</button>
+			<button onclick="pigSelected(card6)" class="pig-btn" id="oinker">
+				<img class="pig-img" src="/assets/PigFPO.png" />
+				Oinker
+			</button>
+		</div>
+		<div id="main-btns-container">
+			<button onclick="confirmRoll('yes')" class="main-btn" id="roll-done">
+				Done
+			</button>
+			<button id="bank" onclick="bank()" class="main-btn">Bank</button>
+		</div>
+
 		<div class="dashboard">
-			<h3 id="console">Game begins!</h3>
 			<ul id="stats">
 				<li id="stats-rndplayer">Round player:</li>
 				<li id="stats-roll">This roll:</li>
-				<li id="stats-round">This round:</li>
-				<li id="stats-total">Player total:</li>
 			</ul>
 			<ul id="player-totals"></ul>
 		</div>
-		<button onclick="pigSelected(card1)" class="pig-card" id="razorback">
-			Razorback: 5pts
-		</button>
-		<button onclick="pigSelected(card2)" class="pig-card" id="trotter">
-			Trotter: 5pts
-		</button>
-		<button onclick="pigSelected(card3)" class="pig-card" id="snouter">
-			Snouter: 10pts
-		</button>
-		<button onclick="pigSelected(card4)" class="pig-card" id="leaning">
-			Leaning Jowler: 15pts
-		</button>
-		<button onclick="pigSelected(card5)" class="pig-card" id="pigout">
-			Pig Out: Lose your points
-		</button>
-		<button onclick="pigSelected(card6)" class="pig-card" id="oinker">
-			Oinker: Back to Zero
-		</button>
-		<button onclick="confirmRoll('yes')" class="main-btn" id="roll-done">
-			Done
-		</button>
-		<button onclick="bank()" class="main-btn">Bank</button>
 	</body>
 	<script src="game.js"></script>
 </html>

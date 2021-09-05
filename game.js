@@ -9,23 +9,23 @@ class Pig {
     switch (state) {
       case "unselected":
         this.state = "unselected"
-        this.image = "porker-single.jpg"
-        document.getElementById(this.name).className = "pig-card";
+        this.image = this.name + "-single.jpg"
+        document.getElementById(this.name).className = "pig-btn";
         break;
       case "single":
         this.state = "single";
-        this.image = "porker-single.jpg"
-        document.getElementById(this.name).className = "pig-card-single";
+        this.image = this.name + "-single.jpg"
+        document.getElementById(this.name).className = "pig-btn single";
         break;
       case "double":
         this.state = "double"
-        this.image = "porker-double.jpg"
-        document.getElementById(this.name).className = "pig-card-double";
+        this.image = this.name + "-double.jpg"
+        document.getElementById(this.name).className = "pig-btn double";
         break;
       case "disabled": 
         this.state = "disabled"
-        this.image = "porker-single.jpg"
-        document.getElementById(this.name).className = "pig-card";
+        this.image = this.name + "-single.jpg"
+        document.getElementById(this.name).className = "pig-btn";
         document.getElementById(this.name).disabled = true;
         break;
       default:
@@ -35,8 +35,8 @@ class Pig {
   }
   resetState() {
     this.state = "unselected"
-    this.image = "porker-single.jpg"
-    document.getElementById(this.name).className = "pig-card";
+    this.image = this.name + "-single.jpg"
+    document.getElementById(this.name).className = "pig-btn";
     document.getElementById(this.name).disabled = false;
   }
 }
@@ -58,7 +58,6 @@ let unselectedPigs = [];
 let confirmBtn = document.getElementById("roll-done")
 let instructions;
 let playerList = [];
-
 
 
 let card1 = new Pig("razorback", "razorback-single.jpg", 5, "unselected")
@@ -143,11 +142,10 @@ function nextPlayer() {
 }
 
 function displayStats() {
-  document.getElementById("console").innerHTML = instructions
-  document.getElementById("stats-rndplayer").innerHTML = "Round player: " + currentPlayer.name
+  document.getElementById("round-num").innerHTML = "Round " + round
+  document.getElementById("round-score").innerHTML = roundScore
   document.getElementById("stats-roll").innerHTML = "This roll: " + rollScore
-  document.getElementById("stats-round").innerHTML = "This round: " + roundScore
-  document.getElementById("stats-total").innerHTML = "Player total: " + currentPlayer.totalPts                                        
+  document.getElementById("player-total").innerHTML = currentPlayer.totalPts                                      
   // document.getElementById("stats-players").innerHTML = "Players: " + playerList.map(e => e.name).join(", ")   //maps playerList array through function e that returns .name of each item in array
   for (let i = 0; i < playerList.length; i++) {
     document.getElementById("p-total-" + (i + 1)).innerHTML = playerList[i].name + ": " + playerList[i].totalPts + " pts"

@@ -1,45 +1,163 @@
 body {
-	background-color: rgb(37, 37, 37);
+	background-color: #000;
 	font-family: Helvetica, Arial, sans-serif;
+	max-width: 720px;
+	margin: 0 auto;
 }
 
-button {
-	width: 200px;
-	height: 100px;
-	font-size: 20px;
-	border: none;
-	border-radius: 7px;
-	margin: 5px;
-	background-color: rgb(61, 61, 61);
+#header {
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	margin: 24px;
+}
+
+#home {
+	display: flex;
+	align-items: center;
+	margin: 0px;
+	min-width: 100px;
+}
+
+#home img {
+	width: 24px;
+	height: 24px;
+}
+
+#home a {
+	margin-left: 10px;
+	width: 50px;
 	color: white;
-	vertical-align: middle;
+	text-decoration: none;
+}
+
+#round-info {
+	flex-grow: 4;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#round-num {
+	margin: 0px;
+	color: #8b8b8b;
+}
+
+#round-score {
+	margin: 0;
+	color: white;
+	font-size: 50px;
+	font-weight: 900;
+}
+
+#rules {
+	color: #f2c94b;
+	align-self: center;
+	min-width: 100px;
+	text-align: right;
+}
+
+#players {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin: 10px 15px;
+	color: white;
+}
+
+.player-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	background-color: #1b1b1b;
+	padding: 10px;
+	border-radius: 16px;
+	border: 2px solid #232323;
+	max-width: 150px;
+}
+
+.player-card.inactive {
+	background-color: #000;
+}
+
+#player-name {
+	margin: 5px;
+	color: #f2c94b;
+	font-weight: 700;
+}
+
+#player-total {
+	margin: 0px;
+	color: white;
+	font-weight: 900;
 }
 
 button:disabled {
-	background-color: rgb(46, 46, 46);
 	color: rgb(19, 19, 19);
+	opacity: 0.5;
 }
 
-.pig-card {
-	background-color: rgb(247, 35, 116);
-	color: white;
+#pigs-container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: stretch;
+	margin: 10px;
+	max-width: 720px;
 }
 
-.pig-card-single {
-	background-color: rgb(226, 44, 114);
+.pig-btn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	margin: 5px;
+	max-width: 400px;
+	min-width: 150px;
+	min-height: 100px;
+	background-color: #1b1b1b;
 	color: white;
-	box-shadow: 0 0 0 2px rgb(255, 255, 255);
+	font-size: 12px;
+	border: none;
+	border-radius: 7px;
 }
 
-.pig-card-double {
-	background-color: rgb(226, 44, 114);
+.pig-img {
+	max-width: 85px;
+	max-height: 66px;
+}
+
+.pig-btn.single {
+	background-color: #eb5757;
 	color: white;
-	box-shadow: 0 0 0 2px rgb(255, 255, 255), 0 0 0 4px rgb(37, 37, 37),
-		0 0 0 6px rgb(255, 255, 255);
+	font-size: 12px;
+}
+
+.pig-btn.double {
+	background-color: #eb5757;
+	color: white;
+	font-size: 12px;
+	box-shadow: 0 0 0 3px rgb(37, 37, 37), 0 0 0 6px #eb5757;
+}
+
+#main-btns-container {
+	display: flex;
+	flex-direction: column;
+	margin: 5px 15px;
 }
 
 .main-btn {
+	margin: 5px 0px;
 	width: 100%;
+	appearance: none;
+	background-color: #242424;
+	color: white;
+	height: 100px;
+	border: none;
+	font-size: 20px;
+	border-radius: 7px;
 }
 
 .dashboard {
@@ -54,6 +172,7 @@ button:disabled {
 .player-totals {
 }
 
-#console {
-	text-align: center;
+#bank {
+	background-color: #f2c94b;
+	color: #000;
 }
