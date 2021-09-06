@@ -93,6 +93,10 @@ body {
 	font-weight: 900;
 }
 
+button {
+	touch-action: manipulation;
+}
+
 button:disabled {
 	color: rgb(19, 19, 19);
 	opacity: 0.5;
