@@ -14,25 +14,14 @@
 				<a href="index.html">Home</a>
 			</div>
 			<div id="round-info">
-				<p id="round-num">Round 1</p>
-				<p id="round-score">5</p>
+				<p id="round-num">Round 0</p>
+				<p id="round-score">0</p>
 			</div>
 			<div id="rules">
 				<a>Rules</a>
 			</div>
 		</div>
 		<div id="players">
-			<div id="player1" class="player-card">
-				<p id="player-name">Jena</p>
-				<p id="player-total">56</p>
-			</div>
-			<div id="player2" class="player-card inactive">
-				<p id="player-name">Sarah</p>
-				<p id="player-total">43</p>
-			</div>
-			<div id="player3" class="player-card inactive">
-				<p id="player-name">Chris</p>
-				<p id="player-total">51</p>
 			</div>
 		</div>
 		<div id="pigs-container">
@@ -65,15 +54,7 @@
 			<button onclick="confirmRoll('yes')" class="main-btn" id="roll-done">
 				Done
 			</button>
-			<button id="bank" onclick="bank()" class="main-btn">Bank</button>
-		</div>
-
-		<div class="dashboard">
-			<ul id="stats">
-				<li id="stats-rndplayer">Round player:</li>
-				<li id="stats-roll">This roll:</li>
-			</ul>
-			<ul id="player-totals"></ul>
+			<button id="bank" onclick="bank()" class="main-btn" disabled="true">Bank</button>
 		</div>
 	</body>
 	<script src="game.js"></script>

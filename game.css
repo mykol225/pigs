@@ -81,13 +81,13 @@ body {
 	background-color: #000;
 }
 
-#player-name {
+.player-name {
 	margin: 5px;
 	color: #f2c94b;
 	font-weight: 700;
 }
 
-#player-total {
+.player-total {
 	margin: 0px;
 	color: white;
 	font-weight: 900;

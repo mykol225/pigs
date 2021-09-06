@@ -77,47 +77,92 @@ function addPlayers() {
       playerList.push(player)                          // add that instance to the playerList array
     }
   }
-  currentPlayer = playerList[0]                        
+  currentPlayer = playerList[0]   
+  addPlayerUI()
+
+}
+
+function addPlayerUI() {
+  let container = document.getElementById('players')
+
+  for (let i = 0; i < (playerList.length); i++) {
+
+    let plrDiv = document.createElement('div')
+    plrDiv.setAttribute('id', 'player_' + (i + 1))
+    plrDiv.setAttribute('class', 'player-card inactive')
+  
+    let plrName = document.createElement('p')
+    plrName.setAttribute('id', 'player-name_' + (i + 1))
+    plrName.setAttribute('class', 'player-name')
+    plrName.innerHTML = playerList[i].name
+  
+    let plrTtl = document.createElement('p')
+    plrTtl.setAttribute('id', 'player-total_' + (i + 1))
+    plrTtl.setAttribute('class', 'player-total')
+    plrTtl.innerHTML = playerList[i].totalPts
+  
+  
+    plrDiv.appendChild(plrName)
+    plrDiv.appendChild(plrTtl)
+  
+    container.appendChild(plrDiv)
+  }
+  let current = playerList.indexOf(currentPlayer)
+  document.getElementById('player_' + (current + 1)).className = "player-card"
 }
 
 
 function newGame() {
-  round = 0
+  round = 1
   rollScore = 0
   roundScore = 0
   confirmIsDisabled(true)
   let params = new URLSearchParams(window.location.search)  // create an instance of the parameters
   let players = JSON.parse(params.get("playerList"))        // find all playerList params and parse the JSON into an array
-  addPlayers(...players)                                    // spread the array out as arguments for addPlayers()
-  
-  for (let i = 0; i < playerList.length; i++) {
-    let ptUl= document.getElementById("player-totals")
-    let ptLi = document.createElement("li")
-    ptLi.className = "player-total"
-    ptLi.id = "p-total-" + (i + 1)
-    ptLi.innerHTML = playerList[i].name + ": " + playerList[i].totalPts + " pts"
-    ptUl.appendChild(ptLi)
-  }
-  newRound()
+  addPlayers(...players)                                    // spread the array out as arguments for 
+  resetCards()
 }
 
-function newRound() {
-  (round > 0) ? nextPlayer() : null;                        // if not on first round call nextPlayer()
+// function setPlayer() {
+//   (round > 1) ? moveToNextPlayer(): null     // if not on first round call
+
+// }
+
+function moveToNextPlayer(){
+  if (playerList.indexOf(currentPlayer) < (playerList.length - 1)) {    //if not at end of array 
+    let current = playerList.indexOf(currentPlayer)
+    current++
+    currentPlayer = playerList[current]
+    document.getElementById('player_' + (current)).className = "player-card inactive"
+    document.getElementById('player_' + (current + 1)).className = "player-card"
+    
+  } else {
+    currentPlayer = playerList[0]
+    document.getElementById('player_' + (playerList.length)).className = "player-card inactive"
+    document.getElementById('player_' + (1)).className = "player-card"
+    newRound()
+  }
+  document.getElementById
+  displayStats()
+}
+
+function newRound() {                       
   round++
   roundScore = 0
   rollScore = 0
-  confirmBtn.disabled = true
   confirmIsDisabled(true)
-  displayStats()
   newRoll()
 }
 
 
 function newRoll() {
-  instructions = currentPlayer.name + "\'s turn. " + "New roll!";
   displayStats()
   rollScore = 0
   confirmIsDisabled(true)
+  resetCards()
+}
+
+function resetCards() {
   selectedPigs = []
   unselectedPigs = [card1.name, card2.name, card3.name, card4.name, card5.name, card6.name]
   card1.resetState()
@@ -129,32 +174,16 @@ function newRoll() {
 }
 
 
-
-function nextPlayer() {
-  if (playerList.indexOf(currentPlayer) < (playerList.length - 1)) {    //if not at end of array 
-    let current = playerList.indexOf(currentPlayer)
-    current++
-    currentPlayer = playerList[current]
-  } else {
-    currentPlayer = playerList[0]
-  }
-  displayStats()
-}
-
 function displayStats() {
   document.getElementById("round-num").innerHTML = "Round " + round
   document.getElementById("round-score").innerHTML = roundScore
-  document.getElementById("stats-roll").innerHTML = "This roll: " + rollScore
-  document.getElementById("player-total").innerHTML = currentPlayer.totalPts                                      
-  // document.getElementById("stats-players").innerHTML = "Players: " + playerList.map(e => e.name).join(", ")   //maps playerList array through function e that returns .name of each item in array
+  document.getElementById("player-name_1").innerHTML = playerList[0].name
+                       
   for (let i = 0; i < playerList.length; i++) {
-    document.getElementById("p-total-" + (i + 1)).innerHTML = playerList[i].name + ": " + playerList[i].totalPts + " pts"
+    document.getElementById("player-total_" + (i + 1)).innerHTML = playerList[i].totalPts
     
   }
-
 }
-
-
 
 
 
@@ -205,7 +234,6 @@ function pigSelected(pig) {
       break;
   }
   picCalc(20, 30)
-  displayStats()
 }
 
 function picCalc(first, second) {
@@ -258,6 +286,7 @@ function confirmRoll(confirm) {
         roundScore = roundScore + rollScore
         newRoll()
         displayStats()
+        document.getElementById('bank').disabled = false
       break;
       case "no":
         console.log("not confirmed");
@@ -272,14 +301,14 @@ function confirmRoll(confirm) {
 // for each pig in unselected change it's state to unselected and enabled
 
 function bank() {
-
   if (roundScore > 0) {
     currentPlayer.totalPts = currentPlayer.totalPts + roundScore
     roundScore = 0    // reset round score
     rollScore = 0     // reset roll score
+    document.getElementById('bank').disabled = true
+    moveToNextPlayer()
+    newRoll()
     displayStats()
-  
-    newRound()
   } else {
     console.log("no points to bank");
   }
