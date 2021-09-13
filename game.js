@@ -336,6 +336,7 @@ function confirmRoll() {
       case "oinker":
       console.log("you lose all points; next turn");
       currentPlayer.totalPts = 0
+      roundScore = 0
       enableDisableByID('bank', true)
       moveToNextPlayer()
       newRoll()
