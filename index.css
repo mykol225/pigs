@@ -80,3 +80,8 @@ color: #FFFFFF;
 	#pill-button {
 	 height: 40px;
 }
+
+@media only screen and -width: 600px) {
+	#pig {
+	 max-width: 340px;
+}
