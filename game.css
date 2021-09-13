@@ -125,7 +125,7 @@ button:disabled {
 	margin: 5px;
 	max-width: 400px;
 	min-width: 150px;
-	min-height: 100px;
+	min-height: 75px;
 	background-color: #1b1b1b;
 	color: white;
 	font-size: 12px;
@@ -134,8 +134,7 @@ button:disabled {
 }
 
 .pig-img {
-	max-width: 85px;
-	max-height: 66px;
+	max-width: 65px;
 }
 
 .pig-btn.single {
@@ -163,7 +162,7 @@ button:disabled {
 	appearance: none;
 	background-color: #242424;
 	color: white;
-	height: 100px;
+	min-height: 65px;
 	border: none;
 	font-size: 20px;
 	border-radius: 7px;
