@@ -5,6 +5,18 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+
+@media only screen and (max-width: 600px) {
+	#pill-button {
+	 height: 40px;
+}}
+
+@media only screen and (max-width: 400px) {
+	#pig {	
+	 max-width: 340px;
+}
+
+
 @font-face {
     font-family: "RidleyGrotesque-Bold";
     src: url("assets/fonts/RidleyGrotesk-Bold.woff") format("woff");
@@ -67,21 +79,12 @@ color: #FFFFFF;
 }
 
 #pill-button:hover {
-	transform: translateY(-6px);
-	/* transition: 0.5s; */
-	-webkit-transition: .5s ease-out;
-  -moz-transition: .5s ease-out;
-  -o-transition: 5s ease-out;
-  transition: .5s ease-out;
-	box-shadow: 0px 50px 0px rgba(0, 0, 0, 0.45);
+transform: translateY(-6px);
+-webkit-transition: .5s ease-out;
+-moz-transition: .5s ease-out;
+-o-transition: 5s ease-out;
+transition: .5s ease-out;
+box-shadow: 0px 50px 0px rgba(0, 0, 0, 0.45);
 }
 
-@media only screen and -width: 600px) {
-	#pill-button {
-	 height: 40px;
-}
-
-@media only screen and -width: 400px) {
-	#pig {
-	 max-width: 340px;
 }
