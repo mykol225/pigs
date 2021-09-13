@@ -18,7 +18,7 @@
 				<p id="round-score">0</p>
 			</div>
 			<div id="rules">
-				<a>Rules</a>
+				<button id="rules-btn" onclick="openRules()">Rules</button>
 			</div>
 		</div>
 		<div id="players">
@@ -58,6 +58,20 @@
 				Done
 			</button>
 			<button id="bank" onclick="bank()" class="main-btn" disabled="true">Bank</button>
+		</div>
+		<div class="overlay" id="overlay" onclick="return false;"></div>
+		<div class="modal" id="modal">
+			<button class="modal-close" onclick="closeRules()">x</button>
+			<div class="modal-content">
+				<h2>How to play</h2>
+				<p>Roll both pigs together. Points are scored depending on how the pigs land. Tap the "PIGS" that you rolled. Tap "CONFIRM".</p>
+				<p>Now you must decide whether to stop rolling and score, or keep rolling and try to add points to your score.</p>
+				<p>If you choose to stop rolling tap "BANK" to bank your round points</p>
+				<p>You may continue to roll the pigs again and again on your turn. You may keep rolling until one of the following occurs:</p>
+				<p> * You decide to stop rolling add score.</p>
+				<p> * You roll a "PIG OUT" which means you score 0 points for this turn.</p>
+				<p> * You roll a "OINKER" which means you lose <em>all</em> your points accumulated in the game so far.</p>
+			</div>
 		</div>
 	</body>
 	<script src="game.js"></script>

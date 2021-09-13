@@ -373,4 +373,19 @@ function shiftArray(pig, fromArray, toArray) {
   }
 } 
 
+function closeRules() {
+  let modal = document.getElementById('modal')
+  let overlay = document.getElementById('overlay')
+  modal.classList.remove('isVisible')
+  overlay.classList.remove('isVisible')
+}
+
+function openRules() {
+  let modal = document.getElementById('modal')
+  let overlay = document.getElementById('overlay')
+  modal.classList.add('isVisible')
+  overlay.classList.add('isVisible')
+}
+
 newGame()
+closeRules()
