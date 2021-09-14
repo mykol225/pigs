@@ -1,8 +1,8 @@
 body {
-	background-color: #000;
-	font-family: Helvetica, Arial, sans-serif;
 	max-width: 720px;
 	margin: 0 auto;
+	background-color: #000;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 @font-face {
@@ -12,16 +12,16 @@ body {
 
 #header {
 	display: flex;
-	justify-content: space-between;
 	align-content: center;
+	justify-content: space-between;
 	margin: 24px;
 }
 
 #home {
 	display: flex;
 	align-items: center;
-	margin: 0px;
 	min-width: 100px;
+	margin: 0px;
 }
 
 #home img {
@@ -30,16 +30,16 @@ body {
 }
 
 #home a {
-	margin-left: 10px;
 	width: 50px;
+	margin-left: 10px;
 	color: white;
 	text-decoration: none;
 }
 
 #round-info {
-	flex-grow: 4;
 	display: flex;
 	flex-direction: column;
+	flex-grow: 4;
 	align-items: center;
 }
 
@@ -56,23 +56,23 @@ body {
 }
 
 #rules-btn {
-	appearance: none;
-	border: none;
-	background-color: #000;
-	padding: 10px;
-	color: #f2c94b;
 	align-self: center;
 	min-width: 100px;
+	padding: 10px;
+	border: none;
+	background-color: #000;
+	color: #f2c94b;
 	text-align: right;
 	cursor: pointer;
+	appearance: none;
 }
 
 #players {
 	display: flex;
 	justify-content: center;
-	gap: 10px;
 	margin: 10px 15px;
 	color: white;
+	gap: 10px;
 }
 
 .player-card {
@@ -80,11 +80,11 @@ body {
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	background-color: #1b1b1b;
-	padding: 10px;
-	border-radius: 16px;
-	border: 2px solid #232323;
 	max-width: 150px;
+	padding: 10px;
+	border: 2px solid #232323;
+	border-radius: 16px;
+	background-color: #1b1b1b;
 }
 
 .player-card.inactive {
@@ -114,28 +114,28 @@ button:disabled {
 
 #pigs-container {
 	display: flex;
-	justify-content: center;
 	flex-wrap: wrap;
 	align-items: stretch;
-	margin: 10px;
+	justify-content: center;
 	max-width: 720px;
+	margin: 10px;
 }
 
 .pig-btn {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	flex-grow: 1;
-	margin: 5px;
-	max-width: 400px;
+	align-items: center;
+	justify-content: center;
 	min-width: 150px;
+	max-width: 400px;
 	min-height: 75px;
+	margin: 5px;
+	border: none;
+	border-radius: 7px;
 	background-color: #1b1b1b;
 	color: white;
 	font-size: 12px;
-	border: none;
-	border-radius: 7px;
 }
 
 .pig-btn-oinker {
@@ -168,9 +168,9 @@ button:disabled {
 
 .pig-btn.double {
 	background-color: #eb5757;
+	box-shadow: 0 0 0 3px rgb(37, 37, 37), 0 0 0 6px #eb5757;
 	color: white;
 	font-size: 12px;
-	box-shadow: 0 0 0 3px rgb(37, 37, 37), 0 0 0 6px #eb5757;
 }
 
 #main-btns-container {
@@ -180,15 +180,15 @@ button:disabled {
 }
 
 .main-btn {
-	margin: 5px 0px;
 	width: 100%;
-	appearance: none;
+	min-height: 65px;
+	margin: 5px 0px;
+	border: none;
+	border-radius: 7px;
 	background-color: #242424;
 	color: white;
-	min-height: 65px;
-	border: none;
 	font-size: 20px;
-	border-radius: 7px;
+	appearance: none;
 }
 
 .dashboard {
@@ -200,51 +200,45 @@ button:disabled {
 	list-style-type: none;
 }
 
-.player-totals {
-}
-
 #bank {
 	background-color: #f2c94b;
 	color: #000;
 }
 
 .modal {
-	opacity: 0;
 	visibility: hidden;
 	position: absolute;
 	top: 50px;
-	left: 0px;
 	right: 0px;
-	margin: auto;
-	transition: opacity 0.3s;
+	left: 0px;
 	width: 300px;
 	height: 500px;
-	background-color: white;
-	color: black;
+	margin: auto;
 	padding: 24px;
 	border-radius: 16px;
+	background-color: white;
+	color: black;
+	opacity: 0;
+	transition: opacity 0.3s;
 }
 .modal-close {
 	position: absolute;
-	right: 15px;
 	top: 15px;
+	right: 15px;
 	width: 40px;
 	height: 40px;
-	font-size: 20px;
-	appearance: none;
 	padding: 0px;
 	border: none;
 	background-color: #fff;
+	font-size: 20px;
 	font-weight: 900;
 	cursor: pointer;
-}
-
-.modal-content {
+	appearance: none;
 }
 
 .modal-content h2 {
-	text-align: center;
 	color: #eb5757;
+	text-align: center;
 }
 
 .modal-content p {
@@ -252,22 +246,22 @@ button:disabled {
 	line-height: 150%;
 }
 .overlay {
-	opacity: 0;
 	visibility: hidden;
 	position: fixed;
-	user-select: none;
-	transition: opacity 0.3s;
 	top: 0;
-	left: 0;
 	right: 0;
 	bottom: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.78);
+	opacity: 0;
+	transition: opacity 0.3s;
+	user-select: none;
 }
 
 .isVisible {
-	opacity: 1;
 	visibility: visible;
+	opacity: 1;
 	pointer-events: auto;
 }
