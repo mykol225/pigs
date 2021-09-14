@@ -7,13 +7,21 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1"
 		/>
-		<title>Add players</title>
+		
+		<title class="title">Add players</title>
 		<link rel="stylesheet" href="addPlayers.css" />
 	</head>
 	<body>
-		<a href="index.html">Home</a>
+		<a href="index.html" style="font-family: 'RidleyGrotesque-Bold';">Home</a>
 		<div id="wrapper">
-			<div><p id="instructions">Players</p></div>
+			<div id="pig">
+				<img src="assets/img-header-pig.png" style="max-width: 150px;">
+			</div>
+		</div>
+		
+		
+		<div id="wrapper">
+			<div><p id="title">Add Players</p></div>
 			<form id="form" autocomplete="off"></form>
 			<button id="addbtn" onclick="addInput()">+ Add player</button>
 			<button
