@@ -16,6 +16,7 @@ body {
 		max-width: 340px;
 	}
 }
+}
 
 @font-face {
 	font-family: 'RidleyGrotesque-Bold';
@@ -78,6 +79,14 @@ body {
 }
 
 #pill-button:hover {
+transform: translateY(-6px);
+-webkit-transition: .5s ease-out;
+-moz-transition: .5s ease-out;
+-o-transition: 5s ease-out;
+transition: .5s ease-out;
+box-shadow: 0px 50px 0px rgba(0, 0, 0, 0.45);
+}
+=======
 	transform: translateY(-6px);
 	-webkit-transition: 0.5s ease-out;
 	-moz-transition: 0.5s ease-out;

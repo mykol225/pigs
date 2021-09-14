@@ -5,6 +5,11 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+@font-face {
+    font-family: "RidleyGrotesque-Bold";
+    src: url("assets/fonts/RidleyGrotesk-Bold.woff") format("woff");
+    }
+
 #header {
 	display: flex;
 	align-content: center;
@@ -131,6 +136,24 @@ button:disabled {
 	background-color: #1b1b1b;
 	color: white;
 	font-size: 12px;
+}
+
+.pig-btn-oinker {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	margin: 5px;
+	max-width: 400px;
+	min-width: 150px;
+	min-height: 75px;
+	background-color: #1b1b1b;
+	color: white;
+	font-size: 12px;
+	border: #eb5757;
+	border-width: 1px;
+	border-radius: 7px;
 }
 
 .pig-img {
