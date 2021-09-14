@@ -1,14 +1,15 @@
+
+
+@font-face {
+	font-family: 'RidleyGrotesk-Bold';
+	src: url('assets/fonts/RidleyGrotesk-Bold.woff') format('woff');
+}
+
 body {
 	margin: 0px;
 	padding: 20px;
 	background-color: #f2c94c;
-	font-family: 'RidleyGrotesque-Bold';
-}
-
-
-@font-face {
-	font-family: 'RidleyGrotesque-Bold';
-	src: url('assets/fonts/RidleyGrotesk-Bold.woff') format('woff');
+	font-family: 'RidleyGrotesk-Bold';
 }
 
 #title {
@@ -16,8 +17,8 @@ body {
 	text-transform: uppercase;
 	text-align: center;
 	margin-top: 100px;
-	font-size: 6em;
-	font-family: 'RidleyGrotesque-Bold';
+	font-size: 4em;
+	font-family: 'RidleyGrotesk-Bold';
 }
 
 #wrapper {
@@ -42,7 +43,7 @@ body {
 	margin: 50px 0px;
 	background-color: rgb(61, 61, 61);
 	color: white;
-	font-family: 'RidleyGrotesque-Bold';
+	font-family: 'RidleyGrotesk-Bold';
 }
 
 #pill-button {
@@ -55,7 +56,7 @@ body {
 	box-sizing: border-box;
 	box-shadow: 0px 34px 0px rgba(0, 0, 0, 0.25);
 	border-radius: 100px;
-	font-family: 'RidleyGrotesque-Bold';
+	font-family: 'RidleyGrotesk-Bold';
 	font-size: 2em;
 	margin: 50px 0px;
 	text-transform: uppercase;
