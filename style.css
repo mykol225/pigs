@@ -3,12 +3,6 @@ body {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
-
-@font-face{
-    font-family: Circular-Black;
-    src: local('/Users/chrisknutson/Documents/GitHub/pigs/fonts/CircularStd-Black.woff') format('woff');
-}
-
 #pig-image {
 	height: 300px;
 	background-color: rgba(187, 122, 122, 0.288);
