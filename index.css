@@ -30,7 +30,7 @@ body {
 	width: fit-content;
 }
 
-/* #newButton {
+#newButton {
 	display: block;
 	width: 100%;
 	max-width: 700px;
@@ -43,7 +43,7 @@ body {
 	background-color: rgb(61, 61, 61);
 	color: white;
 	font-family: 'RidleyGrotesque-Bold';
-} */
+}
 
 #pill-button {
 	display: block;
@@ -79,10 +79,4 @@ box-shadow: 0px 50px 0px rgba(0, 0, 0, 0.45);
 	-o-transition: 5s ease-out;
 	transition: 0.5s ease-out;
 	box-shadow: 0px 50px 0px rgba(0, 0, 0, 0.45);
-}
-
-@media only screen and (max-width: 600px) {
-	#pill-button {
-		height: 100px;
-	}
 }
