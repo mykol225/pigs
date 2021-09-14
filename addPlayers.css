@@ -2,10 +2,26 @@
 	box-sizing: border-box;
 }
 
+a {
+	color: #F2C94C;
+	text-decoration: none;
+
+  }
+
+@font-face {
+    font-family: "RidleyGrotesque-Bold";
+    src: url("assets/fonts/RidleyGrotesk-Bold.woff") format("woff");
+    }
+
+
+#header {
+	display: inline-flex;
+}
+
 body {
 	margin: 0px;
 	padding: 20px;
-	background-color: rgb(37, 37, 37);
+	background-color: #212121;
 	font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -14,64 +30,84 @@ body {
 	max-width: 700px;
 }
 
+#title {
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: 100px;
+	font-size: 3em;
+	font-family: "RidleyGrotesque-Bold";
+}
 p {
 	font-size: 20px;
 	color: white;
 	text-align: center;
+	font-family: "RidleyGrotesque-Bold";
 }
 
 form {
 	display: flex;
 	width: auto;
 	flex-direction: column;
+	font-family: "RidleyGrotesque-Bold";
 }
 
 /* player name input field */
 .player-input {
 	margin: 5px 0px;
-	height: 50px;
-	padding: 10px;
+	height: 100px;
+	padding: 30px;
 	background-color: rgb(24, 24, 24);
 	color: rgb(219, 219, 219);
 	outline: none;
 	box-shadow: none;
 	border: 0;
-	border-radius: 5px;
+	border-radius: 16px;
+	font-size: 1.5em;
+	font-family: 'RidleyGrotesque-Bold';
 }
 
 .player-input:focus {
 	background-color: rgb(0, 0, 0);
 	color: white;
+	font-family: "RidleyGrotesque-Bold";
 }
 
 #addbtn {
 	width: 100%;
-	height: 50px;
+	height: 100px;
 	border: none;
-	border-radius: 7px;
-	background-color: rgb(61, 61, 61);
+	background: #1B1B1B;
+	border-radius: 16px;
+	border: 3px solid #F2C94C;
+	box-sizing: border-box;
 	color: white;
 	font-weight: bold;
 	padding: 10px;
 	margin-top: 5px;
+	font-family: "RidleyGrotesque-Bold";
+	font-size: 1.5em;
 }
 
 #addbtn:disabled {
-	background-color: rgb(46, 46, 46);
-	color: rgb(19, 19, 19);
+	background: #1B1B1B;
+	color: rgb(56, 56, 56);
 }
 
 .main-btn {
-	display: block;
 	width: 100%;
 	height: 100px;
 	margin: 50px 0px;
-	font-size: 20px;
-	border: none;
-	border-radius: 7px;
+	font-size: 1.5em;
 	background-color: rgb(61, 61, 61);
 	color: white;
 	vertical-align: middle;
+	font-family: "RidleyGrotesque-Bold";
+	background: #F2C94C;
+	border: 3px solid #1F1F1F;
+	box-sizing: border-box;
+	border-radius: 16px;
+	color: black;
 }
 
 .main-btn:disabled {
@@ -82,4 +118,9 @@ form {
 .main-btn a {
 	color: white;
 	text-decoration: none;
+}
+
+#pig {
+	margin: auto;
+	width: fit-content;
 }
