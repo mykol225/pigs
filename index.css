@@ -54,7 +54,7 @@ body {
 	background: #000000;
 	border: 2.825px solid #ffffff;
 	box-sizing: border-box;
-	box-shadow: 0px 34px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 34px 0px rgba(0, 0, 0, 0.45);
 	border-radius: 100px;
 	font-family: 'RidleyGrotesk-Bold';
 	font-size: 2em;
@@ -79,5 +79,6 @@ box-shadow: 0px 50px 0px rgba(0, 0, 0, 0.45);
 	-moz-transition: 0.5s ease-out;
 	-o-transition: 5s ease-out;
 	transition: 0.5s ease-out;
-	box-shadow: 0px 50px 0px rgba(0, 0, 0, 0.45);
+	box-shadow: 0px 50px 0px rgba(0, 0, 0, 0.25);
+
 }
