@@ -176,7 +176,7 @@ button:disabled {
 #main-btns-container {
 	display: flex;
 	flex-direction: column;
-	margin: 5px 15px;
+	margin: 5px 30px;
 }
 
 .main-btn {
