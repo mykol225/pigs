@@ -199,6 +199,11 @@ button:disabled {
     text-align: center;
     border-top: aqua;
     border-color: aqua;
+	background-color: black;
+	border-top: 1px solid rgb(61, 61, 61);
+	padding-top: 20px;
+	padding-bottom: 10px;
+
 }
 
 .main-btn {
@@ -308,4 +313,3 @@ button:disabled {
 	color: white;
 	text-align: center;
   }
-}
