@@ -20,8 +20,8 @@ body {
 #home {
 	display: flex;
 	align-items: center;
-	min-width: 100px;
-	margin: 0px;
+	max-width: 100px;
+	margin: 20px;
 }
 
 #home img {
@@ -58,15 +58,18 @@ body {
 
 #rules-btn {
 	align-self: center;
-	min-width: 100px;
-	padding: 10px;
+	/** min-width: 100px; **/
+	padding: 20px;
 	border: none;
 	background-color: #000;
 	color: #f2c94b;
 	text-align: right;
 	cursor: pointer;
 	appearance: none;
-	font-family: 'RidleyGrotesk-Bold'
+	font-family: 'RidleyGrotesk-Bold';
+	border-radius: 100px;
+	border-color: #f2c94b;
+	border-style: solid;
 }
 
 #players {
