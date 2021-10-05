@@ -19,6 +19,13 @@ a {
 
   }
 
+  #home {
+	display: flex;
+	align-items: center;
+	max-width: 100px;
+	/** margin: 20px; **/
+}
+
   #header {
 	display: flex;
 	align-content: center;
@@ -31,12 +38,7 @@ a {
 	height: 24px;
 }
 
-#home {
-	display: flex;
-	align-items: center;
-	max-width: 100px;
-	/** margin: 20px; **/
-}
+
 
 body {
 	margin: 0px;
