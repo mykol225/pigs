@@ -192,7 +192,7 @@ function pigSelected(card) {
       rollScore = rollScore + card.value                          //add value to rollScore 
       enableDisableByID("oinker", true)                                 //disable oinker
       enableDisableByID("pigout", true)                                 //disable pigout
-      document.getElementById("confirmRoll").innerHTML = "Select another pig"
+      document.getElementById("confirmRoll").innerHTML = "Select Another Pig!"
       console.log(card.name + " single selection for " + rollScore + "pts" );
       break;
     case 1:                                                   // if one is already selected

@@ -2,21 +2,43 @@
 	box-sizing: border-box;
 }
 
-a {
-	color: #F2C94C;
-	text-decoration: none;
-
-  }
-
 @font-face {
     font-family: "RidleyGrotesk-Bold";
     src: url("assets/fonts/RidleyGrotesk-Bold.woff") format("woff");
     }
+	
+a {
+	color: #F2C94C;
+	text-decoration: none;
+	font-family: 'RidleyGrotesk-Bold';
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	padding: 2em;
+	margin: -2em;
 
+  }
 
-#header {
-	display: inline-flex;
+  #home {
+	display: flex;
+	align-items: center;
+	max-width: 100px;
+	/** margin: 20px; **/
 }
+
+  #header {
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+	margin: 24px;
+}
+
+#home img {
+	width: 24px;
+	height: 24px;
+}
+
+
 
 body {
 	margin: 0px;

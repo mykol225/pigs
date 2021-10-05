@@ -20,8 +20,8 @@ body {
 #home {
 	display: flex;
 	align-items: center;
-	min-width: 100px;
-	margin: 0px;
+	max-width: 100px;
+	margin: 20px;
 }
 
 #home img {
@@ -35,6 +35,7 @@ body {
 	color: white;
 	text-decoration: none;
 	font-family: 'RidleyGrotesk-Bold';
+	color: #f2c94b;
 }
 
 #round-info {
@@ -58,7 +59,7 @@ body {
 
 #rules-btn {
 	align-self: center;
-	min-width: 100px;
+	/** min-width: 100px; **/
 	padding: 10px;
 	border: none;
 	background-color: #000;
@@ -66,6 +67,10 @@ body {
 	text-align: right;
 	cursor: pointer;
 	appearance: none;
+	font-family: 'RidleyGrotesk-Bold';
+	border-radius: 100px;
+	border-color: #f2c94b;
+	border-style: solid;
 }
 
 #players {
@@ -106,17 +111,17 @@ body {
 
 button {
 	touch-action: manipulation;
+	font-family: 'RidleyGrotesk-Bold';
 }
 
 button:disabled {
-<<<<<<< Updated upstream
 	color: rgb(19, 19, 19);
+	color: rgb(221, 221, 221);
+	background-color: rgb(63, 63, 63);
 	opacity: 0.5;
-=======
 	color: rgb(221, 221, 221);
 	background-color: rgb(63, 63, 63);
 	opacity: 1;
->>>>>>> Stashed changes
 }
 
 #pigs-container {
@@ -282,8 +287,6 @@ button:disabled {
 	opacity: 1;
 	pointer-events: auto;
 }
-<<<<<<< Updated upstream
-=======
 
 @media only screen and (max-width: 600px) {
 	.pig-btn {
@@ -305,4 +308,4 @@ button:disabled {
 	color: white;
 	text-align: center;
   }
->>>>>>> Stashed changes
+}
