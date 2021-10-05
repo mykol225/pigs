@@ -115,9 +115,13 @@ button {
 }
 
 button:disabled {
+	color: rgb(19, 19, 19);
 	color: rgb(221, 221, 221);
 	background-color: rgb(63, 63, 63);
 	opacity: 0.5;
+	color: rgb(221, 221, 221);
+	background-color: rgb(63, 63, 63);
+	opacity: 1;
 }
 
 #pigs-container {
@@ -184,9 +188,17 @@ button:disabled {
 }
 
 #main-btns-container {
-	display: flex;
-	flex-direction: column;
-	margin: 5px 30px;
+	display: inline-block;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: fixed;
+    left: 8px;
+    bottom: 0;
+    width: 96%;
+    text-align: center;
+    border-top: aqua;
+    border-color: aqua;
 }
 
 .main-btn {
@@ -285,4 +297,15 @@ button:disabled {
 		min-height: 46px;
 		font-size: 1em;
 	}
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: red;
+	color: white;
+	text-align: center;
+  }
 }
