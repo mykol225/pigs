@@ -110,10 +110,12 @@ body {
 
 button {
 	touch-action: manipulation;
+	font-family: 'RidleyGrotesk-Bold';
 }
 
 button:disabled {
-	color: rgb(19, 19, 19);
+	color: rgb(221, 221, 221);
+	background-color: rgb(63, 63, 63);
 	opacity: 0.5;
 }
 
