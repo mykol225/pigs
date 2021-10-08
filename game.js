@@ -1,3 +1,5 @@
+/** PIG & PLAYER CLASSES **/
+
 class Pig {
   constructor(name, image, value, state) {
     this.name = name;
@@ -49,6 +51,8 @@ class Player {
 }
 
 
+/** GLOBAL VARIABLES **/
+
 let round;
 let rollScore;
 let roundScore;
@@ -62,7 +66,7 @@ let instructions;
 let playerList = [];
 
 
-let card1 = new Pig("sider", "sider-single.jpg", 1, "unselected")
+let card1 = new Pig("sider", "sider-single.jpg", 0.25, "unselected")
 let card2 = new Pig("razorback", "razorback-single.jpg", 5, "unselected")
 let card3 = new Pig("trotter", "trotter-single.jpg", 5, "unselected")
 let card4 = new Pig("snouter", "snouter-single.jpg", 10, "unselected")
@@ -72,6 +76,8 @@ let card7 = new Pig("oinker", "oinker-single.jpg", 0, "unselected")
 
 let cards = [card1, card2, card3, card4, card5, card6, card7]
 
+
+/** ADD PLAYER CONNECTION **/
 
 function addPlayers() {
   for (let i = 0; i < arguments.length; i++) {         // for every argument in addPlayers()
@@ -156,6 +162,7 @@ function newRound() {
 function newRoll() {
   displayStats()
   rollScore = 0
+  sel = []
   enableDisableByID("confirmRoll", true)
   resetCards()
 }
@@ -184,47 +191,55 @@ function displayStats() {
   }
 }
 
+let sel = []
+
+function addPigs(array) {
+  let arraySum = array.reduce(( sum,a ) => sum + a, 0)          //adds up each element in array\
+  rollScore = Math.floor(arraySum)                                 // sets points to the sum of the array rounded down
+}
+
+
 function pigSelected(card) {
   switch (selectedPigs.length) {
     case 0:                                                   // if no other selected
       card.setState("single")                                     //switchState to single
       shiftArray(card.name, unselectedPigs, selectedPigs)         //shift to selected
-      rollScore = rollScore + card.value                          //add value to rollScore 
       enableDisableByID("oinker", true)                                 //disable oinker
       enableDisableByID("pigout", true)                                 //disable pigout
+      sel.push(card.value)
+      addPigs(sel)
       document.getElementById("confirmRoll").innerHTML = "Select Another Pig!"
-      console.log(card.name + " single selection for " + rollScore + "pts" );
       break;
     case 1:                                                   // if one is already selected
         switch (card.state) {
           case "unselected":                                      //different card as already selected
             card.setState("single")                                 //switchState to single
             shiftArray(card.name, unselectedPigs, selectedPigs)     //shift from unselected to selected array
-            rollScore = rollScore + card.value                      //add to rollScore 
             enableDisableArray(unselectedPigs, true)                //disable all unselected
             enableDisableByID("confirmRoll", false)
-            document.getElementById("confirmRoll").innerHTML = "Confirm roll: " + rollScore + "pts"
-            console.log(card.name + " second selection for " + rollScore + "pts" );
+            sel.push(card.value)
+            addPigs(sel)
+            document.getElementById("confirmRoll").innerHTML = `Confirm: ${rollScore}pts`
             break;
           case "single":                                          //same card as already selected
           card.setState("double")                                   //switchState to double
-            //add to selected                                       //not needed (already in selected)
-            //remove from unselected                                //not needed (already in selected)
             enableDisableArray(unselectedPigs, true)                //disable all unselected
-            rollScore = rollScore + (card.value * 3)                //add to rollScore * 4
             enableDisableByID("confirmRoll", false)                 //enable confirm
             enableDisableByID("confirmRoll", false)
-            document.getElementById("confirmRoll").innerHTML = "Confirm roll: " + rollScore + "pts"
-            console.log(card.name + " is selected twice for " + rollScore + "pts");
+            sel.push(card.value * 3)
+            addPigs(sel)
+            document.getElementById("confirmRoll").innerHTML = `Confirm: ${rollScore}pts`
+
             break;
           case "double":
             card.setState("unselected")                                   //switchState to unselected
             shiftArray(card.name, selectedPigs, unselectedPigs)           //shift from selected array to unselected array
             enableDisableArray(unselectedPigs, false)                     //disable all unselected
-            rollScore = rollScore - (card.value * 4)                      //subtract rollScore * 4
             enableDisableByID("oinker", false)                             //enable oinker
             enableDisableByID("confirmRoll", true)                        //disable confirm
-            console.log(card.name + " has reset score to: " + rollScore + "pts");
+            sel.push(card.value * -4)
+            addPigs(sel)
+            document.getElementById("confirmRoll").innerHTML = "Select pigs"
             break;
           default: 
             break;
@@ -234,13 +249,13 @@ function pigSelected(card) {
       card.setState("unselected")                                   //switchState to unselected
       shiftArray(card.name, selectedPigs, unselectedPigs)           //shift from selected array to unselected array
       enableDisableArray(unselectedPigs, false)                     //disable all unselected
-      rollScore = rollScore - card.value                      //subtract rollScore * 4
       enableDisableByID("confirmRoll", true)                        //disable confirm
-      console.log(card.name + " has resetZ score to: " + rollScore + "pts");
-
+      sel.push(card.value * -1)                                     // need to update confirm roll button to have new rollscore
+      document.getElementById("confirmRoll").innerHTML = "Select pigs"
       break;
     default:
       break;
+
   }
 }
 
@@ -254,15 +269,16 @@ function pigOutSelected(card) {
       enableDisableByID("confirmRoll", false)                       //enable confirm
       document.getElementById("confirmRoll").innerHTML = "Confirm: Pig Out?"
       tempRoundScore = 0                                            //set tempRoundScore to 0
-      console.log(selectedPigs);
       break;
     case "single":
+      // console.log(`Card: ${card.name}, Selected: ${selectedPigs}, Unsel: ${unselectedPigs}`);
       card.setState("unselected")                                   //switchState to unselected
       shiftArray(card.name, selectedPigs, unselectedPigs)           //remove from selected
+      // console.log(`Card: ${card.name}, Selected: ${selectedPigs}, Unsel: ${unselectedPigs}`);
       enableDisableArray(unselectedPigs, false)                     //enable all unselected
       enableDisableByID("oinker", false)                            //disable oinker
       enableDisableByID("confirmRoll", true)                        //enable confirm
-      document.getElementById("confirmRoll").innerHTML = "Done"
+      document.getElementById("confirmRoll").innerHTML = "Select pigs"
       tempRoundScore = 0                                            //set tempRoundScore to roundScore
       break;
     case "double":
@@ -282,8 +298,6 @@ function oinkerSelected(card) {
       enableDisableByID("confirmRoll", false)                       //enable confirm
       document.getElementById("confirmRoll").innerHTML = "Confirm: Oinker?"
       tempPlayerScore = 0                                           //set tempPlayerScore to 0
-      console.log(selectedPigs);
-      console.log(unselectedPigs);
       break;
     case "single":
       card.setState("unselected")                                   //switchState to unselected
@@ -304,8 +318,8 @@ function oinkerSelected(card) {
 
 /**
  * Enable or disable an array
- * @param array unselected or selected
- * @param bool true=disabled, false=enabled
+ * param array unselected or selected
+ * param bool true=disabled, false=enabled
  */
 
 function enableDisableArray(array, bool) {
@@ -316,8 +330,8 @@ function enableDisableArray(array, bool) {
 
 /**
  * Enable or disable an element by ID
- * @param id the elements ID
- * @param bool true=disabled, false=enabled
+ * param id the elements ID
+ * param bool true=disabled, false=enabled
  */
 
 function enableDisableByID(id, bool) {
@@ -327,14 +341,12 @@ function enableDisableByID(id, bool) {
 function confirmRoll() {
   switch (selectedPigs[0]) {
       case "pigout":
-      console.log("back to zero; next turn");
       roundScore = 0
       enableDisableByID('bank', true)
       moveToNextPlayer()
       newRoll()
       break;
       case "oinker":
-      console.log("you lose all points; next turn");
       currentPlayer.totalPts = 0
       roundScore = 0
       enableDisableByID('bank', true)
@@ -343,14 +355,13 @@ function confirmRoll() {
       break;
   
     default:
+        document.getElementById("confirmRoll").innerHTML = "Select pigs"
         roundScore = roundScore + rollScore
         enableDisableByID('bank', false)
         newRoll()
       break;
   }
   displayStats()
-
-  console.log(selectedPigs[0] + " roll confirmed");
 }
 
 function bank() {
@@ -390,3 +401,29 @@ function openRules() {
 
 newGame()
 closeRules()
+
+
+ /*
+
+RULES
+
+Pig out: lose all turn points; next turn
+Sider: 1 point
+
+Trotter: 5 points
+Double Trotter: 20 points  (or 4x)
+
+Razorback: 5 points
+Double Razorback: 20 points  (or 4x)
+
+Snouter: 10pts
+Double snouter: 40pts  (or 4x)
+
+leaning jowler: 15pts
+double leaning jowler: 60 points (or 4x)
+
+mixed combo: add single points (unless mixed with sider; then sider is 0)
+
+Oinker (touching pigs): lose all game points; next turn
+ */
+
