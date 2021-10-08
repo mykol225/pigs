@@ -7,9 +7,9 @@ body {
 }
 
 @font-face {
-    font-family: "RidleyGrotesk-Bold";
-    src: url("assets/fonts/RidleyGrotesk-Bold.woff") format("woff");
-    }
+	font-family: 'RidleyGrotesk-Bold';
+	src: url('assets/fonts/RidleyGrotesk-Bold.woff') format('woff');
+}
 
 #header {
 	display: flex;
@@ -118,11 +118,8 @@ button {
 button:disabled {
 	color: rgb(19, 19, 19);
 	color: rgb(221, 221, 221);
-	background-color: rgb(63, 63, 63);
+	background-color: #3f3f3f;
 	opacity: 0.5;
-	color: rgb(221, 221, 221);
-	background-color: rgb(63, 63, 63);
-	opacity: 1;
 }
 
 #pigs-container {
@@ -190,20 +187,19 @@ button:disabled {
 
 #main-btns-container {
 	display: inline-block;
-    flex-direction: column;
-    margin-top: 20px;
-    position: fixed;
-    left: 8px;
-    bottom: 0;
-    width: 96%;
-    text-align: center;
-    border-top: aqua;
-    border-color: aqua;
+	flex-direction: column;
+	margin-top: 20px;
+	position: fixed;
+	left: 8px;
+	bottom: 0;
+	width: 96%;
+	text-align: center;
+	border-top: aqua;
+	border-color: aqua;
 	background-color: black;
 	border-top: 1px solid rgb(61, 61, 61);
 	padding-top: 20px;
 	padding-bottom: 10px;
-
 }
 
 .main-btn {
@@ -312,4 +308,4 @@ button:disabled {
 	background-color: red;
 	color: white;
 	text-align: center;
-  }
+}
