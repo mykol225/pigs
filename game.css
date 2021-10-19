@@ -92,12 +92,11 @@ body {
 	border: 2px solid #232323;
 	border-radius: 16px;
 	background-color: #1b1b1b;
-	border-color: #f2c94b;
-	border-style: solid;
 }
 
 .player-card.inactive {
 	background-color: #000;
+	border-color: #262626;
 }
 
 .player-name {
