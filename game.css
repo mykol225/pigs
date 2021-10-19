@@ -89,9 +89,10 @@ body {
 	width: 100%;
 	max-width: 150px;
 	padding: 10px;
-	border: 2px solid #232323;
+	border: 2px solid #f700ff;
 	border-radius: 16px;
 	background-color: #1b1b1b;
+	border-color: #f2c94b;
 }
 
 .player-card.inactive {
