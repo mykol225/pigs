@@ -139,6 +139,7 @@ function moveToNextPlayer(){
     currentPlayer = playerList[current]
     document.getElementById('player_' + (current)).className = "player-card inactive"
     document.getElementById('player_' + (current + 1)).className = "player-card"
+    newRound()
     
   } else {
     currentPlayer = playerList[0]
