@@ -70,8 +70,7 @@ body {
 	appearance: none;
 	font-family: 'RidleyGrotesk-Bold';
 	border-radius: 100px;
-	border-color: #f2c94b;
-	border-style: solid;
+	border: 2px solid #f2c94b;
 }
 
 #players {
@@ -89,10 +88,9 @@ body {
 	width: 100%;
 	max-width: 150px;
 	padding: 10px;
-	border: 2px solid #f700ff;
+	border: 2px solid #f2c94b;
 	border-radius: 16px;
 	background-color: #1b1b1b;
-	border-color: #f2c94b;
 }
 
 .player-card.inactive {
